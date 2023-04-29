@@ -1,0 +1,12 @@
+name: Action on Issues
+on: [workflow_dispatch, issues]
+
+jobs:
+  Printing_Event_Details:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Printing Event Details
+        run: |
+          echo ${{github.event}}
+          echo "Printed Event Details Successfully"
