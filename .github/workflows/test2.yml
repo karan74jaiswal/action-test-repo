@@ -1,6 +1,5 @@
 name: Action on Issues
-on: [workflow_dispatch, issues]
-
+on: issues
 jobs:
   Printing_Event_Details:
     runs-on: ubuntu-latest
