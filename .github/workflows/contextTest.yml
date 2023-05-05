@@ -1,0 +1,9 @@
+name: Deploy
+on: [issues, workflow_dispatch]
+
+jobs:
+  EventDetails:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Printing Event Details
+        run: echo ${{toJSON(github.event)}}
