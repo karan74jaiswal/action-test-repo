@@ -49,10 +49,11 @@ jobs:
       - name: Running Build Script
         run: npm run build
         
-      - name: Downloading Artifacts
-        uses: actions/download-artifact@v2.1.1
+      - name: Uploading Artifacts
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: Artifacts
           path: dist
+          
       - name: Printing Deployment Results
         run: echo "Application Deployed Successfully"
