@@ -76,3 +76,10 @@ jobs:
     - name: Publishing Job Outputs
       id: publish
       run: find assets/*.js -type f -execdir echo "::set-output name=script-file::{}" ";"
+
+  Using_Outputs_In_Other_Jobs:
+    runs-on: ubuntu-latest
+    needs: PrintingArtifacts
+    steps:
+      - name: Printing Outputs of another Job
+        run: echo '${{needs.PrintingArtifacts.outputs.script-file}}'
