@@ -18,12 +18,6 @@ jobs:
       - name: Running Test Scripts
         run: npm run test
 
-      - name: Uploading Artifacts
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: Artifacts
-          path: dist
-
       - name: Printing Test Results
         run: echo "Testing Completed Successfully"
 
@@ -36,12 +30,6 @@ jobs:
 
       - name: Installing Dependencies
         run: npm ci
-      
-      - name: Downloading Artifacts
-        uses: actions/download-artifact@v2.1.1
-        with:
-          name: Artifacts
-          path: dist
 
       - name: Running Lint Scripts
         run: npm run lint
