@@ -12,6 +12,12 @@ jobs:
       - name: Checking Out Code
         uses: actions/checkout@v3.5.2
 
+      - name: Caching Dependencies
+        uses: actions/cache@v1.2.1
+        with:
+          path: ~/.npm
+          key: dependency-caching-${{hashFiles('**/package-lock.json')}}
+
       - name: Installing Dependencies
         run: npm ci
 
@@ -28,6 +34,12 @@ jobs:
       - name: Checking Out Code
         uses: actions/checkout@v3.5.2
 
+      - name: Caching Dependencies
+        uses: actions/cache@v1.2.1
+        with:
+          path: ~/.npm
+          key: dependency-caching-${{hashFiles('**/package-lock.json')}}
+
       - name: Installing Dependencies
         run: npm ci
 
@@ -43,6 +55,12 @@ jobs:
     steps:
       - name: Checking Out Code
         uses: actions/checkout@v3.5.2
+
+      - name: Caching Dependencies
+        uses: actions/cache@v1.2.1
+        with:
+          path: ~/.npm
+          key: dependency-caching-${{hashFiles('**/package-lock.json')}}
 
       - name: Installing Dependencies
         run: npm ci
