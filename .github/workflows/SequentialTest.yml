@@ -75,4 +75,4 @@ jobs:
     
     - name: Publishing Job Outputs
       id: publish
-      run: find *.js -type f -execdir echo "::set-output name=script-file::{}" ";"
+      run: find dist/assets/*.js -type f -execdir echo "::set-output name=script-file::{}" ";"
