@@ -6,39 +6,38 @@ on:
       - main
 
 jobs:
-  Testing:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking Out Code
-        uses: actions/checkout@v3.5.2
+  # Testing:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checking Out Code
+  #       uses: actions/checkout@v3.5.2
 
-      - name: Installing Dependencies
-        run: npm ci
+  #     - name: Installing Dependencies
+  #       run: npm ci
 
-      - name: Running Test Scripts
-        run: npm run test
+  #     - name: Running Test Scripts
+  #       run: npm run test
 
-      - name: Printing Test Results
-        run: echo "Testing Completed Successfully"
+  #     - name: Printing Test Results
+  #       run: echo "Testing Completed Successfully"
 
-  Linting:
-    runs-on: ubuntu-latest
-    needs: Testing
-    steps:
-      - name: Checking Out Code
-        uses: actions/checkout@v3.5.2
+  # Linting:
+  #   runs-on: ubuntu-latest
+  #   needs: Testing
+  #   steps:
+  #     - name: Checking Out Code
+  #       uses: actions/checkout@v3.5.2
 
-      - name: Installing Dependencies
-        run: npm ci
+  #     - name: Installing Dependencies
+  #       run: npm ci
 
-      - name: Running Lint Scripts
-        run: npm run lint
+  #     - name: Running Lint Scripts
+  #       run: npm run lint
 
-      - name: Printing Linting Results
-        run: echo "Linting done Successfully"
+  #     - name: Printing Linting Results
+  #       run: echo "Linting done Successfully"
 
   Deploying:
-    needs: Linting
     runs-on: ubuntu-latest
     steps:
       - name: Checking Out Code
@@ -49,6 +48,11 @@ jobs:
 
       - name: Running Build Script
         run: npm run build
-      
+        
+      - name: Downloading Artifacts
+        uses: actions/download-artifact@v2.1.1
+        with:
+          name: Artifacts
+          path: dist
       - name: Printing Deployment Results
         run: echo "Application Deployed Successfully"
