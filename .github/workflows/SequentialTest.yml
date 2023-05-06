@@ -62,7 +62,8 @@ jobs:
   PrintingArtifacts:
     runs-on: ubuntu-latest
     needs: Deploying
-    
+    outputs:
+      script-file: ${{steps.publish.outputs.script-file}}    
     steps:
     - name: Download a Build Artifact
       uses: actions/download-artifact@v2.1.1
@@ -71,3 +72,7 @@ jobs:
     
     - name: Printing Artifacts
       run: ls
+    
+    - name: Publishing Job Outputs
+      id: publish
+      run: find *.js -type f -execdir echo "::set-output name=script-file::{}" ";"
